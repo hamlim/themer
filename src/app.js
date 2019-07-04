@@ -71,7 +71,7 @@ export default function App() {
   const [state, dispatch] = useReducer(appReducer, {})
   return (
     <Main>
-      <H1>Testing</H1>
+      <H1>Themer</H1>
       <Space update={dispatch} />
       <Box as="pre">{JSON.stringify(state, null, 2)}</Box>
     </Main>

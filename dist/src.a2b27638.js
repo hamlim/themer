@@ -29882,7 +29882,7 @@ function App() {
       state = _useReducer4[0],
       dispatch = _useReducer4[1];
 
-  return _react.default.createElement(Main, null, _react.default.createElement(_index.H1, null, "Testing"), _react.default.createElement(Space, {
+  return _react.default.createElement(Main, null, _react.default.createElement(_index.H1, null, "Themer"), _react.default.createElement(Space, {
     update: dispatch
   }), _react.default.createElement(_index.Box, {
     as: "pre"
@@ -30381,7 +30381,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59753" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60630" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
