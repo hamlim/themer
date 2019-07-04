@@ -1,4 +1,4 @@
-import { spaceReducer, isValue } from "../reducers.js";
+import { spaceReducer, isValue, appReducer } from "../reducers.js";
 
 // isValue
 
@@ -47,4 +47,32 @@ test("spaceReducer supports updating a value within the state", () => {
       value: 3
     })
   ).toEqual([1, 3]);
+});
+
+test("spaceReducer throws on invalid actions", () => {
+  expect(() => spaceReducer(null, { type: "FOO" }))
+    .toThrowErrorMatchingInlineSnapshot(`
+"Invalid action dispatched to spaceReducer: {\\"type\\":\\"FOO\\"}.
+
+Allowed actions are: 'update', 'add'."
+`);
+});
+
+// App Reducer
+
+test("appReducer supports updating the space value in state", () => {
+  expect(
+    appReducer({}, { type: "update-space", payload: [0, 2, 4, 6] })
+  ).toEqual({
+    space: [0, 2, 4, 6]
+  });
+});
+
+test("appReducer throws on invalid actions", () => {
+  expect(() => appReducer({}, { type: "FOO" }))
+    .toThrowErrorMatchingInlineSnapshot(`
+"Invalid action dispatched to appReducer: {\\"type\\":\\"FOO\\"}.
+
+Allowed actions are: 'update-space'."
+`);
 });
