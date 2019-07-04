@@ -1,0 +1,30 @@
+{
+  "name": "themer",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:hamlim/themer.git",
+  "author": "Matthew Hamlin <hamlim@outlook.com> (https://matthamlin.me/)",
+  "license": "MIT",
+  "dependencies": {
+    "@emotion/core": "10.0.14",
+    "@emotion/styled": "10.0.14",
+    "react": "16.8.6",
+    "react-dom": "16.8.6",
+    "styled-system": "5.0.12"
+  },
+  "devDependencies": {
+    "@babel/cli": "7.4.4",
+    "@babel/core": "7.4.5",
+    "@babel/preset-env": "7.4.5",
+    "@testing-library/react": "8.0.4",
+    "babel-jest": "24.8.0",
+    "jest": "24.8.0",
+    "parcel-bundler": "1.12.3"
+  },
+  "scripts": {
+    "test": "jest",
+    "test-watch": "jest --watch",
+    "build": "parcel build index.html",
+    "dev": "parcel index.html"
+  }
+}
