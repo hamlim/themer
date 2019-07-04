@@ -29778,13 +29778,115 @@ function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = 
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-function App() {
-  var _useReducer = (0, _react.useReducer)(_reducers.appReducer, {}),
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+function Main(_ref) {
+  var children = _ref.children;
+  return _react.default.createElement(_index.Box, {
+    as: "main",
+    maxWidth: "40em",
+    ml: "auto",
+    mr: "auto",
+    mt: 8
+  }, children);
+}
+
+function NumberInput(_ref2) {
+  var value = _ref2.value,
+      label = _ref2.label,
+      onChange = _ref2.onChange,
+      rest = _objectWithoutProperties(_ref2, ["value", "label", "onChange"]);
+
+  var handleChange = (0, _react.useCallback)(function (event) {
+    var value = event.target.value;
+    onChange(Number(value));
+  }, []);
+  return _react.default.createElement(_index.Box, _extends({}, rest, {
+    as: "label"
+  }), label, _react.default.createElement(_index.Input, {
+    onChange: handleChange,
+    value: value,
+    type: "number"
+  }));
+}
+
+function Space(_ref3) {
+  var update = _ref3.update;
+
+  var _useReducer = (0, _react.useReducer)(_reducers.spaceReducer, null),
       _useReducer2 = _slicedToArray(_useReducer, 2),
-      state = _useReducer2[0],
+      space = _useReducer2[0],
       dispatch = _useReducer2[1];
 
-  return _react.default.createElement(_index.H1, null, "Testing");
+  (0, _react.useEffect)(function () {
+    update({
+      type: 'update-space',
+      payload: space
+    });
+  }, [space]);
+
+  if (space && space.length) {
+    return _react.default.createElement(_index.Box, {
+      display: "block"
+    }, _react.default.createElement(NumberInput, {
+      value: space ? space.length : 0,
+      key: "number",
+      label: "Number of space values in the system",
+      onChange: function onChange(value) {
+        return dispatch({
+          type: 'add',
+          payload: value
+        });
+      }
+    }), space.map(function (val, index) {
+      return _react.default.createElement(_index.Box, {
+        key: index
+      }, _react.default.createElement(NumberInput, {
+        mx: 2,
+        my: 4,
+        value: val || 0,
+        label: "Space value at index: ".concat(index),
+        onChange: function onChange(value) {
+          return dispatch({
+            type: 'update',
+            index: index,
+            value: value
+          });
+        }
+      }));
+    }));
+  }
+
+  return _react.default.createElement(_index.Box, {
+    display: "block"
+  }, _react.default.createElement(NumberInput, {
+    value: space ? space.length : 0,
+    key: "number",
+    label: "Number of space values in the system",
+    onChange: function onChange(value) {
+      return dispatch({
+        type: 'add',
+        payload: value
+      });
+    }
+  }));
+}
+
+function App() {
+  var _useReducer3 = (0, _react.useReducer)(_reducers.appReducer, {}),
+      _useReducer4 = _slicedToArray(_useReducer3, 2),
+      state = _useReducer4[0],
+      dispatch = _useReducer4[1];
+
+  return _react.default.createElement(Main, null, _react.default.createElement(_index.H1, null, "Testing"), _react.default.createElement(Space, {
+    update: dispatch
+  }), _react.default.createElement(_index.Box, {
+    as: "pre"
+  }, JSON.stringify(state, null, 2)));
 }
 },{"react":"node_modules/react/index.js","./reducers.js":"src/reducers.js","./ui/index.js":"src/ui/index.js"}],"node_modules/react-is/cjs/react-is.development.js":[function(require,module,exports) {
 /** @license React v16.8.6
