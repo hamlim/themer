@@ -1,8 +1,8 @@
-import React, { useReducer } from "react";
-
-import { spaceReducer, appReducer } from "./reducers.js";
+import React, { useReducer } from 'react'
+import { spaceReducer, appReducer } from './reducers.js'
+import { H1 } from './ui/index.js'
 
 export default function App() {
-  const [state, dispatch] = useReducer(appReducer, {});
-  return <h1>Testing</h1>;
+  const [state, dispatch] = useReducer(appReducer, {})
+  return <H1>Testing</H1>
 }
